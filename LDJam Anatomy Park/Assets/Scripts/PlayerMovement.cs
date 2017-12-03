@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour {
     Animator anim;
     float xScale;
     float yScale;
+    public bool isCollided;
 
 	// Use this for initialization
 	void Start () {
@@ -15,6 +16,7 @@ public class PlayerMovement : MonoBehaviour {
         anim = GetComponent<Animator>();
         xScale = transform.localScale.x;
         yScale = transform.localScale.y;
+        isCollided = false;
 	}
 	
 	// Update is called once per frame
@@ -49,6 +51,18 @@ public class PlayerMovement : MonoBehaviour {
             anim.SetBool("moveUp", false);
             anim.SetBool("isIdle", true);
         }
-        transform.Translate(new Vector2(dirX * speed * Time.deltaTime, dirY * speed * Time.deltaTime));
+
+        if(!isCollided)
+            transform.Translate(new Vector2(dirX * speed * Time.deltaTime, dirY * speed * Time.deltaTime));
 	}
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        isCollided = true;
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        isCollided = false;
+    }
 }
