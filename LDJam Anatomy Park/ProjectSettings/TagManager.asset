@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - box
+  - Tile
   layers:
   - Default
   - TransparentFX
@@ -41,4 +42,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Base
+    uniqueID: 3077955729
+    locked: 0
+  - name: Top
+    uniqueID: 3902850545
     locked: 0

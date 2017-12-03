@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour {
 
-    public Transform player;
+
 
 	// Use this for initialization
 	void Start () {
@@ -14,9 +14,22 @@ public class CameraFollow : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        Vector2 pos = player.transform.position;
-
-        if ((transform.position.x <= 15f && transform.position.x >= -15f) && (transform.position.y <= 11f && transform.position.y >= -11f))
+		Vector2 pos = GameObject.FindGameObjectWithTag("Player").transform.position;
+		float dirX = Input.GetAxis("Horizontal");
+		float dirY = Input.GetAxis("Vertical");
+		if (dirX < 0) {
+			dirX = -1;
+		}
+		if (dirX > 0) {
+			dirX = 1;
+		}
+		if (dirY > 0) {
+			dirY = 1;
+		}
+		if (dirY < 0) {
+			dirY = -1;
+		}
+		if ((pos.x+dirX <= 15f && pos.x+dirX >= -15f) && (pos.y+dirY <= 12f && pos.y+dirY >= -12f)  )
         {
             /* if (pos.x < transform.position.x - 5f)
              {
@@ -36,7 +49,13 @@ public class CameraFollow : MonoBehaviour {
              }
              */
 
-            transform.position = new Vector3(pos.x, pos.y, -10f);
-        }
+			//Commented it as sometimes when player touch boundary and comes back from different it feels glitchy  
+			//transform.position = new Vector3(pos.x, pos.y, -10f);
+		
+			transform.position = Vector3.MoveTowards (new Vector3 (transform.position.x, transform.position.y, -10f), new Vector3 (pos.x, pos.y, -10f), 0.10f);
+
+		}
+
+
 	}
 }
