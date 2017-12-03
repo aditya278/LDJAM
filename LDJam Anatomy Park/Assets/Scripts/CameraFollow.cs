@@ -29,7 +29,7 @@ public class CameraFollow : MonoBehaviour {
 		if (dirY < 0) {
 			dirY = -1;
 		}
-		if ((pos.x+dirX <= 15f && pos.x+dirX >= -15f) && (pos.y+dirY <= 12f && pos.y+dirY >= -12f)  )
+		if ((pos.x+dirX <= 16f && pos.x+dirX >= -16f) && (pos.y+dirY <= 12f && pos.y+dirY >= -12f)  )
         {
             /* if (pos.x < transform.position.x - 5f)
              {
