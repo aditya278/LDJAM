@@ -53,7 +53,21 @@ public class PlayerMovement : MonoBehaviour {
             anim.SetBool("isIdle", true);
         }
 
-        transform.Translate(new Vector2(dirX * speed * Time.deltaTime, dirY * speed * Time.deltaTime));
+		//using direct values of dirx nd y was not feasible
+		if (dirX < 0) {
+			dirX = -1;
+		}
+		if (dirX > 0) {
+			dirX = 1;
+		}
+		if (dirY > 0) {
+			dirY = 1;
+		}
+		if (dirY < 0) {
+			dirY = -1;
+		}
+		if((transform.position.x+dirX <= 18f && transform.position.x+dirX >= -18f) && (transform.position.y+dirY <= 13f && transform.position.y+dirY >= -13f)  )
+		transform.Translate(new Vector2(dirX * speed * Time.deltaTime, dirY * speed * Time.deltaTime));
 
 
         if(collidedWithBox && Input.GetMouseButtonDown(0))
@@ -79,10 +93,14 @@ public class PlayerMovement : MonoBehaviour {
         {
             collidedWithBox = true;
         }
+
+
     }
 
     void OnCollisionExit2D(Collision2D collision)
     {
         collidedWithBox = false;
     }
+
+
 }
