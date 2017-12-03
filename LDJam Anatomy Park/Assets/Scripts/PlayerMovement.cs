@@ -6,9 +6,10 @@ public class PlayerMovement : MonoBehaviour {
 
     public float speed = 2f;
     Animator anim;
+    public Animator boxAnim;
     float xScale;
     float yScale;
-    public bool isCollided;
+    public bool collidedWithBox;
 
 	// Use this for initialization
 	void Start () {
@@ -16,7 +17,7 @@ public class PlayerMovement : MonoBehaviour {
         anim = GetComponent<Animator>();
         xScale = transform.localScale.x;
         yScale = transform.localScale.y;
-        isCollided = false;
+        collidedWithBox = false;
 	}
 	
 	// Update is called once per frame
@@ -52,17 +53,36 @@ public class PlayerMovement : MonoBehaviour {
             anim.SetBool("isIdle", true);
         }
 
-        if(!isCollided)
-            transform.Translate(new Vector2(dirX * speed * Time.deltaTime, dirY * speed * Time.deltaTime));
+        transform.Translate(new Vector2(dirX * speed * Time.deltaTime, dirY * speed * Time.deltaTime));
+
+
+        if(collidedWithBox && Input.GetMouseButtonDown(0))
+        {
+            bool open = boxAnim.GetBool("isOpen");
+
+            if (!open)
+            {
+                boxAnim.SetBool("isOpen", true);
+            }
+            else
+            {
+                boxAnim.SetBool("isOpen", false);
+            }
+        }
+
 	}
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        isCollided = true;
+        
+        if(collision.gameObject.tag == "box")
+        {
+            collidedWithBox = true;
+        }
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    void OnCollisionExit2D(Collision2D collision)
     {
-        isCollided = false;
+        collidedWithBox = false;
     }
 }
