@@ -99,8 +99,13 @@ public class PlayerMovement : MonoBehaviour {
 
     void OnCollisionExit2D(Collision2D collision)
     {
-        collidedWithBox = false;
+        if (collision.gameObject.tag == "box")
+        {
+            collidedWithBox = false;
+        }
     }
+
+    
 
 
 }
