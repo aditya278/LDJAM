@@ -17,6 +17,10 @@ TagManager:
   - Bact4
   - Bact5
   - Toilet
+  - Bact1_human
+  - Bact2_human
+  - Bact3_human
+  - Bact4_human
   layers:
   - Default
   - TransparentFX

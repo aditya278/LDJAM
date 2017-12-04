@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-        gameManager = gameManager = GameObject.FindGameObjectWithTag("Gamemanager").gameObject.GetComponent<GameManagerScript>();
+        gameManager = GameObject.FindGameObjectWithTag("Gamemanager").gameObject.GetComponent<GameManagerScript>();
         speed = gameManager.playerSpeed;
         anim = GetComponent<Animator>();
         xScale = transform.localScale.x;
@@ -115,7 +115,22 @@ public class PlayerMovement : MonoBehaviour {
         }
     }
 
-    
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Toilet")
+        {
+            
+            gameManager.Decrease(1,1);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Toilet")
+        {
+            gameManager.unFreeze();
+        }
+    }
 
 }
