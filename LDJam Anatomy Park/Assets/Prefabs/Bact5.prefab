@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 95603591718860976}
   - component: {fileID: 114962091972517370}
   - component: {fileID: 114247747259871688}
+  - component: {fileID: 60444331808140632}
   m_Layer: 0
   m_Name: Bact5
   m_TagString: Untagged
@@ -43,6 +44,90 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!60 &60444331808140632
+PolygonCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1001800947122070}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.9, y: 0.7266667}
+    newSize: {x: 0.9, y: 0.7266667}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.31, y: -0.15666667}
+      - {x: 0.24333334, y: -0.13000001}
+      - {x: 0.31666666, y: -0.15}
+      - {x: 0.35666668, y: -0.15666667}
+      - {x: 0.37, y: -0.11666667}
+      - {x: 0.33, y: -0.05666667}
+      - {x: 0.40333334, y: -0.05666667}
+      - {x: 0.4166667, y: -0.043333333}
+      - {x: 0.4166667, y: -0.023333333}
+      - {x: 0.39666668, y: -0.0033333334}
+      - {x: 0.43666667, y: 0.03666667}
+      - {x: 0.43666667, y: 0.13000001}
+      - {x: 0.40333334, y: 0.15666667}
+      - {x: 0.40333334, y: 0.20333333}
+      - {x: 0.36333334, y: 0.22333334}
+      - {x: 0.34333333, y: 0.25666666}
+      - {x: 0.22333334, y: 0.33666667}
+      - {x: 0.16333334, y: 0.33666667}
+      - {x: 0.11666667, y: 0.32333335}
+      - {x: 0.05, y: 0.33}
+      - {x: 0.0033333334, y: 0.36333334}
+      - {x: -0.123333335, y: 0.36333334}
+      - {x: -0.14333333, y: 0.32333335}
+      - {x: -0.15666667, y: 0.33}
+      - {x: -0.17666668, y: 0.33}
+      - {x: -0.19666667, y: 0.32333335}
+      - {x: -0.26333335, y: 0.25}
+      - {x: -0.38333336, y: 0.23}
+      - {x: -0.35, y: 0.17666668}
+      - {x: -0.37666667, y: 0.17666668}
+      - {x: -0.42333335, y: 0.15666667}
+      - {x: -0.4166667, y: 0.11}
+      - {x: -0.39000002, y: 0.07}
+      - {x: -0.43, y: 0.03666667}
+      - {x: -0.43, y: -0.016666668}
+      - {x: -0.41, y: -0.05}
+      - {x: -0.29666668, y: -0.05}
+      - {x: -0.35, y: -0.09}
+      - {x: -0.36333334, y: -0.10333334}
+      - {x: -0.36333334, y: -0.15666667}
+      - {x: -0.27, y: -0.13666667}
+      - {x: -0.28333333, y: -0.16333334}
+      - {x: -0.27, y: -0.22333334}
+      - {x: -0.21000001, y: -0.21000001}
+      - {x: -0.15, y: -0.25}
+      - {x: -0.083333336, y: -0.26333335}
+      - {x: -0.05666667, y: -0.24333334}
+      - {x: -0.0033333334, y: -0.27}
+      - {x: 0.01, y: -0.27}
+      - {x: 0.05, y: -0.26333335}
+      - {x: 0.05, y: -0.22333334}
+      - {x: 0.07, y: -0.27}
+      - {x: 0.15, y: -0.27}
+      - {x: 0.14333333, y: -0.20333333}
+      - {x: 0.20333333, y: -0.18333334}
+      - {x: 0.29000002, y: -0.20333333}
+    - - {x: -0.023333333, y: 0.29666668}
+      - {x: -0.016666668, y: 0.29000002}
+      - {x: -0.03666667, y: 0.28333333}
+      - {x: -0.030000001, y: 0.28333333}
 --- !u!95 &95603591718860976
 Animator:
   serializedVersion: 3
@@ -72,17 +157,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  gravity: {x: NaN, y: NaN, z: NaN}
+  gravity: {x: 0, y: 0, z: 0}
   groundMask:
     serializedVersion: 2
     m_Bits: 4294967295
   centerOffset: 1
-  rotationIn2D: 0
+  rotationIn2D: 1
   repathRate: 0.5
   target: {fileID: 0}
   canSearch: 1
   canMove: 1
-  speed: 3
+  speed: 0.6
   rotationSpeed: 360
   slowdownDistance: 0.6
   pickNextWaypointDist: 2
@@ -149,7 +234,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: a2d5f46a0324503478bf59ef7f49ee2c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

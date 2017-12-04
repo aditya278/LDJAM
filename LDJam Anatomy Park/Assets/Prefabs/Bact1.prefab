@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 50725251218679830}
   - component: {fileID: 114505135124459764}
   - component: {fileID: 114180954971403346}
+  - component: {fileID: 60100751889567338}
   m_Layer: 0
   m_Name: Bact1
   m_TagString: Untagged
@@ -64,6 +65,61 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!60 &60100751889567338
+PolygonCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1703409070003550}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.22, y: 0.94}
+    newSize: {x: 1.22, y: 0.94}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.43666667, y: -0.38333336}
+      - {x: 0.48333335, y: -0.32333335}
+      - {x: 0.48333335, y: -0.27}
+      - {x: 0.5966667, y: -0.20333333}
+      - {x: 0.61, y: -0.18333334}
+      - {x: 0.61, y: 0.05}
+      - {x: 0.5566667, y: 0.17}
+      - {x: 0.5233334, y: 0.21666667}
+      - {x: 0.41, y: 0.25666666}
+      - {x: 0.40333334, y: 0.30333334}
+      - {x: 0.33666667, y: 0.35666668}
+      - {x: 0.15, y: 0.40333334}
+      - {x: 0.06333333, y: 0.40333334}
+      - {x: -0.016666668, y: 0.36333334}
+      - {x: -0.11, y: 0.39000002}
+      - {x: -0.21000001, y: 0.37666667}
+      - {x: -0.26333335, y: 0.30333334}
+      - {x: -0.39000002, y: 0.29666668}
+      - {x: -0.44333336, y: 0.23666668}
+      - {x: -0.54333335, y: 0.13000001}
+      - {x: -0.55, y: 0.05666667}
+      - {x: -0.5566667, y: -0.0033333334}
+      - {x: -0.5566667, y: -0.123333335}
+      - {x: -0.5233334, y: -0.15666667}
+      - {x: -0.48333335, y: -0.28333333}
+      - {x: -0.34333333, y: -0.39666668}
+      - {x: -0.25666666, y: -0.46333334}
+      - {x: -0.17666668, y: -0.47}
+      - {x: 0.22333334, y: -0.47}
+      - {x: 0.27, y: -0.43666667}
+      - {x: 0.30333334, y: -0.40333334}
 --- !u!95 &95974839390665590
 Animator:
   serializedVersion: 3
@@ -170,7 +226,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 8
   m_Sprite: {fileID: 21300000, guid: 70f53b6fe27003d4babc1efa6b70023e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

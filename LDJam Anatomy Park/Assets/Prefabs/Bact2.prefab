@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 95321535390201834}
   - component: {fileID: 114731559141824112}
   - component: {fileID: 114299327901402318}
+  - component: {fileID: 60054488718625062}
   m_Layer: 0
   m_Name: Bact2
   m_TagString: Untagged
@@ -43,6 +44,69 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!60 &60054488718625062
+PolygonCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1695843127157382}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.1933334, y: 0.94}
+    newSize: {x: 1.1933334, y: 0.94}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.5566667, y: 0.06333333}
+      - {x: 0.4766667, y: 0.17}
+      - {x: 0.35, y: 0.23}
+      - {x: 0.37666667, y: 0.24333334}
+      - {x: 0.43666667, y: 0.31}
+      - {x: 0.43, y: 0.34333333}
+      - {x: 0.39000002, y: 0.39000002}
+      - {x: 0.35666668, y: 0.40333334}
+      - {x: 0.26333335, y: 0.40333334}
+      - {x: 0.17666668, y: 0.43}
+      - {x: 0.13000001, y: 0.43666667}
+      - {x: 0.023333333, y: 0.43666667}
+      - {x: -0.030000001, y: 0.40333334}
+      - {x: -0.17666668, y: 0.4166667}
+      - {x: -0.23, y: 0.39666668}
+      - {x: -0.26333335, y: 0.31666666}
+      - {x: -0.23666668, y: 0.29666668}
+      - {x: -0.22333334, y: 0.21000001}
+      - {x: -0.32333335, y: 0.14333333}
+      - {x: -0.37, y: 0.06333333}
+      - {x: -0.37, y: -0.11666667}
+      - {x: -0.25666666, y: -0.22333334}
+      - {x: -0.07, y: -0.30333334}
+      - {x: -0.023333333, y: -0.31}
+      - {x: 0.19, y: -0.31}
+      - {x: 0.33, y: -0.29666668}
+      - {x: 0.49, y: -0.18333334}
+      - {x: 0.5566667, y: -0.09}
+    - - {x: -0.030000001, y: 0.27}
+      - {x: 0.016666668, y: 0.28333333}
+      - {x: -0.0033333334, y: 0.29000002}
+      - {x: -0.01, y: 0.28333333}
+      - {x: -0.03666667, y: 0.28333333}
+      - {x: -0.043333333, y: 0.27666667}
+    - - {x: 0.17666668, y: 0.29666668}
+      - {x: 0.18333334, y: 0.31}
+      - {x: 0.21666667, y: 0.27666667}
+      - {x: 0.20333333, y: 0.28333333}
+      - {x: 0.15, y: 0.28333333}
 --- !u!95 &95321535390201834
 Animator:
   serializedVersion: 3
@@ -72,17 +136,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  gravity: {x: NaN, y: NaN, z: NaN}
+  gravity: {x: 0, y: 0, z: 0}
   groundMask:
     serializedVersion: 2
     m_Bits: 4294967295
   centerOffset: 1
-  rotationIn2D: 0
+  rotationIn2D: 1
   repathRate: 0.5
   target: {fileID: 0}
   canSearch: 1
   canMove: 1
-  speed: 3
+  speed: 1.5
   rotationSpeed: 360
   slowdownDistance: 0.6
   pickNextWaypointDist: 2
@@ -149,7 +213,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 7
   m_Sprite: {fileID: 21300000, guid: a868471e3dd07d242acd1aeb23fa6fb0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
