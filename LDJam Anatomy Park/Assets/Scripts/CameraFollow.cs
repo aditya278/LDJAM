@@ -15,7 +15,7 @@ public class CameraFollow : MonoBehaviour {
 	void Update () {
 
 		Vector2 pos = GameObject.FindGameObjectWithTag("Player").transform.position;
-		float dirX = Input.GetAxis("Horizontal");
+		/*float dirX = Input.GetAxis("Horizontal");
 		float dirY = Input.GetAxis("Vertical");
 		if (dirX < 0) {
 			dirX = -1;
@@ -30,7 +30,7 @@ public class CameraFollow : MonoBehaviour {
 			dirY = -1;
 		}
 		if ((pos.x+dirX <= 16f && pos.x+dirX >= -16f) && (pos.y+dirY <= 12f && pos.y+dirY >= -12f)  )
-        {
+        {*/
             /* if (pos.x < transform.position.x - 5f)
              {
                  transform.position = new Vector3(transform.position.x - 5f, transform.position.y, -10f);
@@ -54,7 +54,7 @@ public class CameraFollow : MonoBehaviour {
 		
 			transform.position = Vector3.MoveTowards (new Vector3 (transform.position.x, transform.position.y, -10f), new Vector3 (pos.x, pos.y, -10f), 0.10f);
 
-		}
+		//}
 
 
 	}

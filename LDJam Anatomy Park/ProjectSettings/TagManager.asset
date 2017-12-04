@@ -9,6 +9,7 @@ TagManager:
   - Mirror
   - Kidney
   - Coster
+  - Toxic
   layers:
   - Default
   - TransparentFX

@@ -6,10 +6,11 @@ public class PlayerMovement : MonoBehaviour {
 
     public float speed = 2f;
     Animator anim;
-    public Animator boxAnim;
+    //public Animator boxAnim;
     float xScale;
     float yScale;
     public bool collidedWithBox;
+	GameObject boxxgam;
 
 	// Use this for initialization
 	void Start () {
@@ -54,7 +55,7 @@ public class PlayerMovement : MonoBehaviour {
         }
 
 		//using direct values of dirx nd y was not feasible
-		if (dirX < 0) {
+	/*	if (dirX < 0) {
 			dirX = -1;
 		}
 		if (dirX > 0) {
@@ -65,14 +66,18 @@ public class PlayerMovement : MonoBehaviour {
 		}
 		if (dirY < 0) {
 			dirY = -1;
-		}
-		if((transform.position.x+dirX <= 18f && transform.position.x+dirX >= -18f) && (transform.position.y+dirY <= 13f && transform.position.y+dirY >= -13f)  )
+		}*/
+		//if((transform.position.x+dirX <= 18f && transform.position.x+dirX >= -18f) && (transform.position.y+dirY <= 13f && transform.position.y+dirY >= -13f)  )
 		transform.Translate(new Vector2(dirX * speed * Time.deltaTime, dirY * speed * Time.deltaTime));
 
 
         if(collidedWithBox && Input.GetMouseButtonDown(0))
         {
-            bool open = boxAnim.GetBool("isOpen");
+           
+			BoxTriigger b = boxxgam.GetComponent<BoxTriigger> ();
+			b.trigger ();
+
+			/*bool open = boxAnim.GetBool("isOpen");
 
             if (!open)
             {
@@ -81,7 +86,7 @@ public class PlayerMovement : MonoBehaviour {
             else
             {
                 boxAnim.SetBool("isOpen", false);
-            }
+            }*/
         }
 
 	}
@@ -92,6 +97,7 @@ public class PlayerMovement : MonoBehaviour {
         if(collision.gameObject.tag == "box")
         {
             collidedWithBox = true;
+			boxxgam = collision.gameObject;
         }
 
 
