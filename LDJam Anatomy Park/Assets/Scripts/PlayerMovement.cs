@@ -6,10 +6,11 @@ public class PlayerMovement : MonoBehaviour {
 
     public float speed = 2f;
     Animator anim;
-    public Animator boxAnim;
+    //public Animator boxAnim;
     float xScale;
     float yScale;
     public bool collidedWithBox;
+	GameObject boxxgam;
 
 	// Use this for initialization
 	void Start () {
@@ -72,7 +73,11 @@ public class PlayerMovement : MonoBehaviour {
 
         if(collidedWithBox && Input.GetMouseButtonDown(0))
         {
-            bool open = boxAnim.GetBool("isOpen");
+           
+			BoxTriigger b = boxxgam.GetComponent<BoxTriigger> ();
+			b.trigger ();
+
+			/*bool open = boxAnim.GetBool("isOpen");
 
             if (!open)
             {
@@ -81,7 +86,7 @@ public class PlayerMovement : MonoBehaviour {
             else
             {
                 boxAnim.SetBool("isOpen", false);
-            }
+            }*/
         }
 
 	}
@@ -92,6 +97,7 @@ public class PlayerMovement : MonoBehaviour {
         if(collision.gameObject.tag == "box")
         {
             collidedWithBox = true;
+			boxxgam = collision.gameObject;
         }
 
 
