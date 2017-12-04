@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEditor.SceneManagement;
 
 public class GameManagerScript : MonoBehaviour {
 
@@ -12,8 +14,16 @@ public class GameManagerScript : MonoBehaviour {
     public float diffSpeed = 0.2f;
     public GameObject[] enemies;
     PlayerMovement playerMovement;
+    public GameObject ftext,ctext;
 
     public int life = 5;
+
+    public GameObject gameOverCanvas;
+    public GameObject gameWonCanvas;
+
+    public GameObject gameUI;
+    public Animator gameUiAnim;
+    int x = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -29,9 +39,13 @@ public class GameManagerScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        Debug.Log("Coin" + coin + "food" + food);
+        //Debug.Log("Coin" + coin + "food" + food);
 
-        if(food>5)
+        ftext.GetComponent<Text>().text = "Food: " + food;
+
+        ctext.GetComponent<Text>().text = "Coin: " + coin;
+
+        if (food>5)
         {
             for(int i = enemies.Length-1; i>=0;i--)
             {
@@ -132,6 +146,25 @@ public class GameManagerScript : MonoBehaviour {
                 }
             }
         }
+
+        if (PlayerPrefs.GetInt("firsttime", 1) == 2)
+        {
+            gameUI.gameObject.SetActive(false);
+        }
+        if(Input.GetMouseButtonDown(0) && PlayerPrefs.GetInt("firsttime",1)==1)
+        {
+            x++;
+            gameUiAnim.SetInteger(Animator.StringToHash("xDist"),x);
+            
+            if (x>3)
+            {
+                gameUI.gameObject.SetActive(false);
+                PlayerPrefs.SetInt("firsttime", 2);
+            }
+            
+
+        }
+        
     }
 
     public void Increase(int c, int f)
@@ -219,10 +252,22 @@ public class GameManagerScript : MonoBehaviour {
     public void GameOver()
     {
         Time.timeScale = 0;
+        gameOverCanvas.SetActive(true);
+
     }
    
     public void Won()
     {
+        Time.timeScale = 0;
+        gameWonCanvas.SetActive(true);
+    }
 
+    public void Replay()
+    {
+        EditorSceneManager.LoadScene("Main Scene");
+        gameOverCanvas.SetActive(false);
+        gameWonCanvas.SetActive(false);
+        gameUI.SetActive(false);
+        Time.timeScale = 1;
     }
 }

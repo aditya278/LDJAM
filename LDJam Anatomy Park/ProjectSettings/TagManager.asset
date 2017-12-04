@@ -23,6 +23,8 @@ TagManager:
   - Bact4_human
   - ExitGate
   - Won
+  - CoinText
+  - FoodText
   layers:
   - Default
   - TransparentFX

@@ -27,6 +27,8 @@ public class PlayerMovement : MonoBehaviour {
     public AudioSource flush;
     public AudioSource rides;
 
+    public bool isHurt = false;
+
     // Use this for initialization
     void Start () {
 
@@ -41,7 +43,6 @@ public class PlayerMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        
         speed = gameManager.playerSpeed;
         float dirX = Input.GetAxis("Horizontal");
         float dirY = Input.GetAxis("Vertical");
@@ -59,35 +60,74 @@ public class PlayerMovement : MonoBehaviour {
             anim.SetBool("moveDown", false);
             anim.SetBool("moveUp", true);
             anim.SetBool("isIdle", false);
+            anim.SetBool("hurtMoveUp", false);
+            anim.SetBool("hurtIdle", false);
 
         } else if (dirY < 0 || dirX != 0)
         {
             anim.SetBool("moveDown", true);
             anim.SetBool("moveUp", false);
             anim.SetBool("isIdle", false);
+            anim.SetBool("hurtMoveUp", false);
+            anim.SetBool("hurtIdle", false);
 
         } else
         {
             anim.SetBool("moveDown", false);
             anim.SetBool("moveUp", false);
             anim.SetBool("isIdle", true);
+            anim.SetBool("hurtMoveUp", false);
+            anim.SetBool("hurtIdle", false);
         }
 
-		//using direct values of dirx nd y was not feasible
-	/*	if (dirX < 0) {
-			dirX = -1;
-		}
-		if (dirX > 0) {
-			dirX = 1;
-		}
-		if (dirY > 0) {
-			dirY = 1;
-		}
-		if (dirY < 0) {
-			dirY = -1;
-		}*/
-		//if((transform.position.x+dirX <= 18f && transform.position.x+dirX >= -18f) && (transform.position.y+dirY <= 13f && transform.position.y+dirY >= -13f)  )
-		//transform.Translate(new Vector2(dirX * speed * Time.deltaTime, dirY * speed * Time.deltaTime));
+
+        if (gameManager.food >= 4)
+        {
+            isHurt = true;
+            if (dirY > 0)
+            {
+                anim.SetBool("moveDown", false);
+                anim.SetBool("hurtMoveUp", true);
+                anim.SetBool("isIdle", false);
+                anim.SetBool("hurtIdle", false);
+                anim.SetBool("moveUp", false);
+            }
+            else if (dirY < 0 || dirX != 0)
+            {
+                anim.SetBool("moveDown", true);
+                anim.SetBool("moveUp", false);
+                anim.SetBool("isIdle", false);
+                anim.SetBool("hurtMoveUp", false);
+                anim.SetBool("hurtIdle", false);
+
+            }
+            else
+            {
+                anim.SetBool("moveDown", false);
+                anim.SetBool("moveUp", false);
+                anim.SetBool("isIdle", false);
+                anim.SetBool("hurtMoveUp", false);
+                anim.SetBool("hurtIdle", true);
+
+            }
+        }
+
+
+        //using direct values of dirx nd y was not feasible
+        /*	if (dirX < 0) {
+                dirX = -1;
+            }
+            if (dirX > 0) {
+                dirX = 1;
+            }
+            if (dirY > 0) {
+                dirY = 1;
+            }
+            if (dirY < 0) {
+                dirY = -1;
+            }*/
+        //if((transform.position.x+dirX <= 18f && transform.position.x+dirX >= -18f) && (transform.position.y+dirY <= 13f && transform.position.y+dirY >= -13f)  )
+        //transform.Translate(new Vector2(dirX * speed * Time.deltaTime, dirY * speed * Time.deltaTime));
         transform.position += new Vector3(dirX * speed * Time.deltaTime, dirY * speed * Time.deltaTime);
 
         if (collidedWithBox && Input.GetMouseButtonDown(0))
