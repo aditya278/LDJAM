@@ -135,12 +135,15 @@ public class AIPath : AIBase {
 
 	/** Called when the component is enabled */
 	protected virtual void OnEnable () {
-		// Make sure we receive callbacks when paths are calculated
-		seeker.pathCallback += OnPathComplete;
+        // Make sure we receive callbacks when paths are calculated
+
+        Debug.Log("Enable");
+        seeker.pathCallback += OnPathComplete;
 		Init();
 	}
 
-	void Init () {
+    
+    void Init () {
 		if (startHasRun) {
 			lastRepath = float.NegativeInfinity;
 			StartCoroutine(RepeatTrySearchPath());

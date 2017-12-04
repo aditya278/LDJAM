@@ -11,15 +11,19 @@ public class GameManagerScript : MonoBehaviour {
     public float playerSpeed = 2f;
     public float diffSpeed = 0.2f;
     public GameObject[] enemies;
+    PlayerMovement playerMovement;
+
+    public int life = 5;
 
 	// Use this for initialization
 	void Start () {
 
-        for (int i = 0; i < enemies.Length; i++)
-        {
-            enemies[i].GetComponent<AIPath>().enabled = false;
+        playerMovement = GameObject.FindGameObjectWithTag("Player").gameObject.GetComponent<PlayerMovement>();
+        //for (int i = 0; i < enemies.Length; i++)
+        //{
+            //enemies[i].GetComponent<AIPath>().enabled = false;
             
-        }
+        //}
 	}
 	
 	// Update is called once per frame
@@ -31,8 +35,9 @@ public class GameManagerScript : MonoBehaviour {
         {
             for(int i = enemies.Length-1; i>=0;i--)
             {
-                if(enemies[i].gameObject.tag == "Bact1")
+                if(enemies[i].gameObject.tag == "Bact1" && !playerMovement.insideToilet && !playerMovement.insideCoster && !playerMovement.insideKidney && !playerMovement.insideMirror)
                 {
+                    enemies[i].GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
                     enemies[i].GetComponent<AIPath>().enabled = true;
                     enemies[i].GetComponent<Animator>().SetBool("transform", true);
                 }
@@ -43,7 +48,8 @@ public class GameManagerScript : MonoBehaviour {
             {
                 if (enemies[i].gameObject.tag == "Bact1")
                 {
-                    enemies[i].GetComponent<AIPath>().enabled = false;
+                    Freeze();
+                    //enemies[i].GetComponent<AIPath>().enabled = false;
                     enemies[i].GetComponent<Animator>().SetBool("transform", false);
                 }
             }
@@ -53,9 +59,9 @@ public class GameManagerScript : MonoBehaviour {
         {
             for (int i = enemies.Length - 1; i >= 0; i--)
             {
-                if (enemies[i].gameObject.tag == "Bact2")
+                if (enemies[i].gameObject.tag == "Bact2" && !playerMovement.insideToilet && !playerMovement.insideCoster && !playerMovement.insideKidney && !playerMovement.insideMirror)
                 {
-
+                    enemies[i].GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
                     enemies[i].GetComponent<AIPath>().enabled = true;
                     enemies[i].GetComponent<Animator>().SetBool("transform", true);
                 }
@@ -67,8 +73,8 @@ public class GameManagerScript : MonoBehaviour {
             {
                 if (enemies[i].gameObject.tag == "Bact2")
                 {
-
-                    enemies[i].GetComponent<AIPath>().enabled = false;
+                    Freeze();
+                   // enemies[i].GetComponent<AIPath>().enabled = false;
                     enemies[i].GetComponent<Animator>().SetBool("transform", false);
                 }
             }
@@ -78,8 +84,9 @@ public class GameManagerScript : MonoBehaviour {
         {
             for (int i = enemies.Length - 1; i >= 0; i--)
             {
-                if (enemies[i].gameObject.tag == "Bact3")
+                if (enemies[i].gameObject.tag == "Bact3" && !playerMovement.insideToilet && !playerMovement.insideCoster && !playerMovement.insideKidney && !playerMovement.insideMirror)
                 {
+                    enemies[i].GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
                     enemies[i].GetComponent<AIPath>().enabled = true;
                     enemies[i].GetComponent<Animator>().SetBool("transform", true);
                 }
@@ -91,7 +98,8 @@ public class GameManagerScript : MonoBehaviour {
             {
                 if (enemies[i].gameObject.tag == "Bact3")
                 {
-                    enemies[i].GetComponent<AIPath>().enabled = false;
+                    Freeze();
+                   // enemies[i].GetComponent<AIPath>().enabled = false;
                     enemies[i].GetComponent<Animator>().SetBool("transform", false);
                 }
             }
@@ -102,8 +110,9 @@ public class GameManagerScript : MonoBehaviour {
         {
             for (int i = enemies.Length-1; i >= 0; i--)
             {
-                if (enemies[i].gameObject.tag == "Bact4")
+                if (enemies[i].gameObject.tag == "Bact4" && !playerMovement.insideToilet && !playerMovement.insideCoster && !playerMovement.insideKidney && !playerMovement.insideMirror)
                 {
+                    enemies[i].GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
                     enemies[i].GetComponent<AIPath>().enabled = true;
                     enemies[i].GetComponent<Animator>().SetBool("transform", true);
                 }
@@ -115,9 +124,11 @@ public class GameManagerScript : MonoBehaviour {
             {
                 if (enemies[i].gameObject.tag == "Bact4")
                 {
-                    enemies[i].GetComponent<AIPath>().enabled = false;
+                    // enemies[i].GetComponent<AIPath>().enabled = false;
+                    Freeze();
                     enemies[i].GetComponent<Animator>().SetBool("transform", false);
                    
+
                 }
             }
         }
@@ -146,7 +157,7 @@ public class GameManagerScript : MonoBehaviour {
             }
             else
             {
-                Debug.Log("Death By Pooping");
+                GameOver();
                
             }
         }
@@ -174,5 +185,44 @@ public class GameManagerScript : MonoBehaviour {
         }
     }
 
+    public void ReduceLife(int n)
+    {
+        if(life-n >= 0)
+            life -= n;
+        else
+        {
+            GameOver();
+        }
+    }
+
+    public void EnterRides(int c, int rideNo)
+    {
+        if(coin - c >= 0)
+        {
+            Freeze();
+            coin -= c;
+
+            if(rideNo == 0)
+            {
+                playerMovement.ridedKidney = true;
+            } else if (rideNo == 1)
+            {
+                playerMovement.ridedMirror = true;
+            } else
+            {
+                playerMovement.ridedCoster = true;
+            }
+
+        }
+    }
+
+    public void GameOver()
+    {
+        Time.timeScale = 0;
+    }
    
+    public void Won()
+    {
+
+    }
 }

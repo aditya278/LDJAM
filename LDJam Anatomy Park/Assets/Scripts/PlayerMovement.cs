@@ -17,6 +17,16 @@ public class PlayerMovement : MonoBehaviour {
     public bool insideCoster = false;
     public bool insideMirror = false;
 
+    public bool ridedKidney = false;
+    public bool ridedCoster = false;
+    public bool ridedMirror = false;
+
+    public GameObject exitGate;
+
+    public AudioSource hurt;
+    public AudioSource flush;
+    public AudioSource rides;
+
     // Use this for initialization
     void Start () {
 
@@ -31,6 +41,7 @@ public class PlayerMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+        
         speed = gameManager.playerSpeed;
         float dirX = Input.GetAxis("Horizontal");
         float dirY = Input.GetAxis("Vertical");
@@ -76,10 +87,10 @@ public class PlayerMovement : MonoBehaviour {
 			dirY = -1;
 		}*/
 		//if((transform.position.x+dirX <= 18f && transform.position.x+dirX >= -18f) && (transform.position.y+dirY <= 13f && transform.position.y+dirY >= -13f)  )
-		transform.Translate(new Vector2(dirX * speed * Time.deltaTime, dirY * speed * Time.deltaTime));
+		//transform.Translate(new Vector2(dirX * speed * Time.deltaTime, dirY * speed * Time.deltaTime));
+        transform.position += new Vector3(dirX * speed * Time.deltaTime, dirY * speed * Time.deltaTime);
 
-
-        if(collidedWithBox && Input.GetMouseButtonDown(0))
+        if (collidedWithBox && Input.GetMouseButtonDown(0))
         {
            
 			BoxTriigger b = boxxgam.GetComponent<BoxTriigger> ();
@@ -100,28 +111,40 @@ public class PlayerMovement : MonoBehaviour {
         if (insideToilet && Input.GetMouseButtonDown(0))
         {
             Debug.Log("Entered Toilet");
+            flush.Play();
             gameManager.Decrease(1, 1);
         }
 
 
-        if (insideKidney && Input.GetMouseButtonDown(0))
+        if (insideKidney && Input.GetMouseButtonDown(0) && !ridedKidney)
         {
             Debug.Log("Entered Kidney");
-            gameManager.Decrease(1, 1);
+            rides.Play();
+            gameManager.EnterRides(1, 0);
+           
+            
         }
 
-        if (insideMirror && Input.GetMouseButtonDown(0))
+        if (insideMirror && Input.GetMouseButtonDown(0) && !ridedMirror)
         {
             Debug.Log("Entered Mirror");
-            gameManager.Decrease(1, 1);
+            rides.Play();
+            gameManager.EnterRides(1, 1);
+           
         }
 
-        if (insideCoster && Input.GetMouseButtonDown(0))
+        if (insideCoster && Input.GetMouseButtonDown(0) && !ridedCoster)
         {
             Debug.Log("Entered Coster");
-            gameManager.Decrease(1, 1);
+            rides.Play();
+            gameManager.EnterRides(1, 2);
+            
         }
-
+        if (ridedCoster && ridedKidney && ridedMirror)
+        {
+            exitGate.SetActive(false);
+            
+        }
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -131,6 +154,13 @@ public class PlayerMovement : MonoBehaviour {
         {
             collidedWithBox = true;
 			boxxgam = collision.gameObject;
+        }
+
+        if (collision.gameObject.tag == "Bact1" || collision.gameObject.tag == "Bact2" || collision.gameObject.tag == "Bact3" || collision.gameObject.tag == "Bact4")
+        {
+            hurt.Play();
+            gameManager.GameOver();
+            //transform.gameObject.GetComponent<Rigidbody2D>().AddForce(collision.gameObject.GetComponent<Collider>().GetComponent<Rigidbody2D>().transform.forward * 5f, ForceMode2D.Impulse);
         }
 
 
@@ -147,7 +177,14 @@ public class PlayerMovement : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Toilet")
+        
+
+        if(collision.gameObject.tag == "Won")
+        {
+            gameManager.Won();
+        }
+
+        if (collision.gameObject.tag == "Toilet")
         {
             insideToilet = true;
             gameManager.Freeze();
@@ -169,6 +206,12 @@ public class PlayerMovement : MonoBehaviour {
         {
             insideCoster = true;
             gameManager.Freeze();
+        }
+
+        if(collision.gameObject.tag == "Toxic")
+        {
+            hurt.Play();
+            gameManager.GameOver();
         }
     }
 

@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 114561793660145362}
   - component: {fileID: 61135295580366430}
   - component: {fileID: 50140567303274652}
+  - component: {fileID: 114470679740246016}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -38,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1439694582272508}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.01, y: 0, z: 0}
+  m_LocalPosition: {x: -11.76, y: -9.9, z: 0}
   m_LocalScale: {x: 0.15, y: 0.15, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -106,6 +107,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114470679740246016
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1439694582272508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee6f176ab24002d4881845a25f74078b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114561793660145362
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -118,8 +130,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
-  boxAnim: {fileID: 0}
   collidedWithBox: 0
+  gameManager: {fileID: 0}
+  insideToilet: 0
+  insideKidney: 0
+  insideCoster: 0
+  insideMirror: 0
+  ridedKidney: 0
+  ridedCoster: 0
+  ridedMirror: 0
+  exitGate: {fileID: 0}
 --- !u!212 &212636130622158822
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -129,6 +149,7 @@ SpriteRenderer:
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -144,13 +165,14 @@ SpriteRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -392116751
-  m_SortingLayer: 2
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: ee6033bbca2efd74896b2f1811d172c7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

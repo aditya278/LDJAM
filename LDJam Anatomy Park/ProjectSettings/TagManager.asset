@@ -21,6 +21,8 @@ TagManager:
   - Bact2_human
   - Bact3_human
   - Bact4_human
+  - ExitGate
+  - Won
   layers:
   - Default
   - TransparentFX
