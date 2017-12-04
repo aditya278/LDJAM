@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEditor.SceneManagement;
+using UnityEngine.SceneManagement;
 
 public class GameManagerScript : MonoBehaviour {
 
 
     public int food = 1;
     public int coin = 0;
-    int count = 5;
     public float playerSpeed = 2f;
     public float diffSpeed = 0.2f;
     public GameObject[] enemies;
@@ -264,7 +263,7 @@ public class GameManagerScript : MonoBehaviour {
 
     public void Replay()
     {
-        EditorSceneManager.LoadScene("Main Scene");
+        SceneManager.LoadScene("Main Scene");
         gameOverCanvas.SetActive(false);
         gameWonCanvas.SetActive(false);
         gameUI.SetActive(false);

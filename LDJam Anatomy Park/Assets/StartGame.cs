@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor.SceneManagement;
+using UnityEngine.SceneManagement;
 
 public class StartGame : MonoBehaviour {
 
@@ -17,7 +17,7 @@ public class StartGame : MonoBehaviour {
 
     public void PlayGame()
     {
-        EditorSceneManager.LoadScene("Main Scene");
+        SceneManager.LoadScene("Main Scene");
     }
 
 }
