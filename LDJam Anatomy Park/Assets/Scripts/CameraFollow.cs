@@ -52,7 +52,7 @@ public class CameraFollow : MonoBehaviour {
 			//Commented it as sometimes when player touch boundary and comes back from different it feels glitchy  
 			//transform.position = new Vector3(pos.x, pos.y, -10f);
 		
-			transform.position = Vector3.MoveTowards (new Vector3 (transform.position.x, transform.position.y, -10f), new Vector3 (pos.x, pos.y, -10f), 0.10f);
+			transform.position = new Vector3 (pos.x, pos.y, -10f);
 
 		//}
 

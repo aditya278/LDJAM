@@ -12,9 +12,13 @@ public class PlayerMovement : MonoBehaviour {
     public bool collidedWithBox;
 	GameObject boxxgam;
     public GameManagerScript gameManager;
+    public bool insideToilet = false;
+    public bool insideKidney = false;
+    public bool insideCoster = false;
+    public bool insideMirror = false;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 
         gameManager = GameObject.FindGameObjectWithTag("Gamemanager").gameObject.GetComponent<GameManagerScript>();
         speed = gameManager.playerSpeed;
@@ -93,7 +97,32 @@ public class PlayerMovement : MonoBehaviour {
             }*/
         }
 
-	}
+        if (insideToilet && Input.GetMouseButtonDown(0))
+        {
+            Debug.Log("Entered Toilet");
+            gameManager.Decrease(1, 1);
+        }
+
+
+        if (insideKidney && Input.GetMouseButtonDown(0))
+        {
+            Debug.Log("Entered Kidney");
+            gameManager.Decrease(1, 1);
+        }
+
+        if (insideMirror && Input.GetMouseButtonDown(0))
+        {
+            Debug.Log("Entered Mirror");
+            gameManager.Decrease(1, 1);
+        }
+
+        if (insideCoster && Input.GetMouseButtonDown(0))
+        {
+            Debug.Log("Entered Coster");
+            gameManager.Decrease(1, 1);
+        }
+
+    }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -120,8 +149,26 @@ public class PlayerMovement : MonoBehaviour {
     {
         if(collision.gameObject.tag == "Toilet")
         {
-            
-            gameManager.Decrease(1,1);
+            insideToilet = true;
+            gameManager.Freeze();
+        }
+
+        if(collision.gameObject.tag == "Kidney")
+        {
+            insideKidney = true;
+            gameManager.Freeze();
+        }
+
+        if(collision.gameObject.tag == "Mirror")
+        {
+            insideMirror = true;
+            gameManager.Freeze();
+        }
+
+        if(collision.gameObject.tag == "Coster")
+        {
+            insideCoster = true;
+            gameManager.Freeze();
         }
     }
 
@@ -129,8 +176,29 @@ public class PlayerMovement : MonoBehaviour {
     {
         if(collision.gameObject.tag == "Toilet")
         {
+            insideToilet = false;
+            Debug.Log("Exited Toilet");
             gameManager.unFreeze();
         }
+
+        if (collision.gameObject.tag == "Kidney")
+        {
+            insideKidney = false;
+            gameManager.unFreeze();
+        }
+
+        if (collision.gameObject.tag == "Mirror")
+        {
+            insideMirror = false;
+            gameManager.unFreeze();
+        }
+
+        if (collision.gameObject.tag == "Coster")
+        {
+            insideCoster = false;
+            gameManager.unFreeze();
+        }
+
     }
 
 }

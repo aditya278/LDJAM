@@ -18,6 +18,7 @@ public class GameManagerScript : MonoBehaviour {
         for (int i = 0; i < enemies.Length; i++)
         {
             enemies[i].GetComponent<AIPath>().enabled = false;
+            
         }
 	}
 	
@@ -116,7 +117,7 @@ public class GameManagerScript : MonoBehaviour {
                 {
                     enemies[i].GetComponent<AIPath>().enabled = false;
                     enemies[i].GetComponent<Animator>().SetBool("transform", false);
-                   // enemies[i].gameObject.transform.localEulerAngles = new Vector3(0f, 0f, 0f);
+                   
                 }
             }
         }
@@ -133,11 +134,8 @@ public class GameManagerScript : MonoBehaviour {
     {
         if (coin - c >= 0)
         {
-            for(int i=0; i < enemies.Length;i++)
-            {
-                enemies[i].GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
-            }
 
+           
 
             if (food - f >= 0)
             {
@@ -163,6 +161,16 @@ public class GameManagerScript : MonoBehaviour {
         for (int i = 0; i < enemies.Length; i++)
         {
             enemies[i].GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+           
+
+        }
+    }
+
+    public void Freeze()
+    {
+        for (int i = 0; i < enemies.Length; i++)
+        {
+            enemies[i].GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
         }
     }
 
