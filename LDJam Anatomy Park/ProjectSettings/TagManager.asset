@@ -10,6 +10,13 @@ TagManager:
   - Kidney
   - Coster
   - Toxic
+  - Gamemanager
+  - Bact1
+  - Bact2
+  - Bact3
+  - Bact4
+  - Bact5
+  - Toilet
   layers:
   - Default
   - TransparentFX

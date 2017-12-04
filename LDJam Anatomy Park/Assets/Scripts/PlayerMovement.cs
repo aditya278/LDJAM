@@ -4,17 +4,20 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
 
-    public float speed = 2f;
+    public float speed;
     Animator anim;
     //public Animator boxAnim;
     float xScale;
     float yScale;
     public bool collidedWithBox;
 	GameObject boxxgam;
+    public GameManagerScript gameManager;
 
 	// Use this for initialization
 	void Start () {
 
+        gameManager = gameManager = GameObject.FindGameObjectWithTag("Gamemanager").gameObject.GetComponent<GameManagerScript>();
+        speed = gameManager.playerSpeed;
         anim = GetComponent<Animator>();
         xScale = transform.localScale.x;
         yScale = transform.localScale.y;
@@ -24,6 +27,7 @@ public class PlayerMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+        speed = gameManager.playerSpeed;
         float dirX = Input.GetAxis("Horizontal");
         float dirY = Input.GetAxis("Vertical");
         
